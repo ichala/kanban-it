@@ -5,7 +5,10 @@ function App() {
   const routes = useRoutes(routesConfig);
 
   return (
-    { routes }
+    <>
+      { routes }
+
+    </>
   );
 }
 
