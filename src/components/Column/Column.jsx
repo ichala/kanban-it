@@ -1,8 +1,7 @@
 import React from 'react';
 import { BsCircleFill, BsPlusLg } from 'react-icons/bs';
-import Card from '../Card/Card';
 
-const Column = () => (
+const Column = ({ children }) => (
   <div className="flex flex-col flex-shrink-0 w-72 ">
     <div className="flex items-center justify-center flex-shrink-0  p-2">
       <span className=" text-sm font-semibold flex gap-2 items-center">
@@ -17,9 +16,7 @@ const Column = () => (
       </button>
     </div>
     <div className="flex flex-col rounded h-[700px] bg-base-100 my-2 p-3 overflow-auto column-webkit">
-      {Array(10)
-        .fill(<Card />)
-        ?.map((card) => card)}
+      {children}
     </div>
   </div>
 );
