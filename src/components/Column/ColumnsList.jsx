@@ -1,34 +1,35 @@
-import { useState } from 'react';
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import { useContext } from 'react';
+import { DragDropContext, Draggable } from 'react-beautiful-dnd';
 import Card from '../Card/Card';
 import Column from './Column';
 import NewColumn from './NewColumn';
-import mockData from '../../config/fake';
+import { StorageContext } from '../../config/Context/storage';
+import StrictModeDroppable from '../../config/StrictModeDropable';
 
 const ColumnsList = () => {
-  const [data, setData] = useState(mockData);
+  const { StorageData, setStorageData } = useContext(StorageContext);
   const onDragEnd = (result) => {
     if (!result.destination) return;
     const { source, destination } = result;
     if (source.droppableId !== destination.droppableId) {
-      const sourceColIndex = data.findIndex((e) => e.id === source.droppableId);
-      const destinationColIndex = data.findIndex((e) => e.id === destination.droppableId);
-      const sourceCol = data[sourceColIndex];
-      const destinationCol = data[destinationColIndex];
+      const sourceColIndex = StorageData.findIndex((e) => e.id === source.droppableId);
+      const destinationColIndex = StorageData.findIndex((e) => e.id === destination.droppableId);
+      const sourceCol = StorageData[sourceColIndex];
+      const destinationCol = StorageData[destinationColIndex];
       const sourceTask = [...sourceCol.tasks];
       const destinationTask = [...destinationCol.tasks];
       const [removed] = sourceTask.splice(source.index, 1);
       destinationTask.splice(destination.index, 0, removed);
-      data[sourceColIndex].tasks = sourceTask;
-      data[destinationColIndex].tasks = destinationTask;
-      setData(data);
+      StorageData[sourceColIndex].tasks = sourceTask;
+      StorageData[destinationColIndex].tasks = destinationTask;
+      setStorageData([...StorageData]);
     }
   };
   return (
     <>
       <DragDropContext onDragEnd={onDragEnd}>
-        {data.map((item) => (
-          <Droppable
+        {StorageData.map((item) => (
+          <StrictModeDroppable
             key={item.id}
             droppableId={item.id}
           >
@@ -36,10 +37,9 @@ const ColumnsList = () => {
               <div
                 key={item.id}
                 {...provided.droppableProps}
-                className="kanban__section"
                 ref={provided.innerRef}
               >
-                <Column>
+                <Column color={item.color} id={item.id}>
                   {item.tasks.map((task, index) => (
                     <Draggable
                       key={task.id}
@@ -54,6 +54,7 @@ const ColumnsList = () => {
                           style={{
                             ...provided.draggableProps.style,
                             opacity: snapshot.isDragging ? '0.3' : '1',
+
                           }}
                         >
                           <Card />
@@ -62,10 +63,11 @@ const ColumnsList = () => {
                     </Draggable>
                   ))}
                   {provided.placeholder}
+
                 </Column>
               </div>
             )}
-          </Droppable>
+          </StrictModeDroppable>
         ))}
       </DragDropContext>
       <NewColumn />
