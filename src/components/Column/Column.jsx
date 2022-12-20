@@ -24,7 +24,7 @@ const Column = ({ children, color, id }) => {
       </div>
       <div className="flex flex-col rounded h-[700px] bg-base-100 my-2 p-3 overflow-auto column-webkit">
         {children}
-        <NewCard />
+        <NewCard id={id} />
       </div>
     </div>
   );
