@@ -1,9 +1,10 @@
 import { useContext } from 'react';
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import { DragDropContext, Draggable } from 'react-beautiful-dnd';
 import Card from '../Card/Card';
 import Column from './Column';
 import NewColumn from './NewColumn';
 import { StorageContext } from '../../config/Context/storage';
+import StrictModeDroppable from '../../config/StrictModeDropable';
 
 const ColumnsList = () => {
   const { StorageData, setStorageData } = useContext(StorageContext);
@@ -28,7 +29,7 @@ const ColumnsList = () => {
     <>
       <DragDropContext onDragEnd={onDragEnd}>
         {StorageData.map((item) => (
-          <Droppable
+          <StrictModeDroppable
             key={item.id}
             droppableId={item.id}
           >
@@ -66,7 +67,7 @@ const ColumnsList = () => {
                 </Column>
               </div>
             )}
-          </Droppable>
+          </StrictModeDroppable>
         ))}
       </DragDropContext>
       <NewColumn />
