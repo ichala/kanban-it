@@ -121,7 +121,8 @@ const CardForm = ({ addcard }) => {
                         }));
                       }}
                       type="text"
-                      placeholder="Enter Description"
+                      placeholder="Enter Task"
+                      required
                     />
                   </div>
 
