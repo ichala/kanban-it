@@ -12,8 +12,12 @@ const ColumnsList = () => {
     if (!result.destination) return;
     const { source, destination } = result;
     if (source.droppableId !== destination.droppableId) {
-      const sourceColIndex = StorageData.findIndex((e) => e.id === source.droppableId);
-      const destinationColIndex = StorageData.findIndex((e) => e.id === destination.droppableId);
+      const sourceColIndex = StorageData.findIndex(
+        (e) => e.id === source.droppableId,
+      );
+      const destinationColIndex = StorageData.findIndex(
+        (e) => e.id === destination.droppableId,
+      );
       const sourceCol = StorageData[sourceColIndex];
       const destinationCol = StorageData[destinationColIndex];
       const sourceTask = [...sourceCol.tasks];
@@ -29,10 +33,7 @@ const ColumnsList = () => {
     <>
       <DragDropContext onDragEnd={onDragEnd}>
         {StorageData.map((item) => (
-          <StrictModeDroppable
-            key={item.id}
-            droppableId={item.id}
-          >
+          <StrictModeDroppable key={item.id} droppableId={item.id}>
             {(provided) => (
               <div
                 key={item.id}
@@ -54,16 +55,14 @@ const ColumnsList = () => {
                           style={{
                             ...provided.draggableProps.style,
                             opacity: snapshot.isDragging ? '0.3' : '1',
-
                           }}
                         >
-                          <Card />
+                          <Card data={task} />
                         </div>
                       )}
                     </Draggable>
                   ))}
                   {provided.placeholder}
-
                 </Column>
               </div>
             )}
