@@ -17,8 +17,8 @@ const New = () => {
         if (column.id === id) {
           return {
             ...column,
-            tasks: [
-              ...column.tasks,
+            cards: [
+              ...column.cards,
               {
                 id: uuidv4(),
                 title: values.title,

@@ -18,9 +18,9 @@ const NewColumn = () => {
       ...prev,
       {
         id: uuidv4(),
-        name: NewColumnName,
+        title: NewColumnName,
         color,
-        tasks: [],
+        cards: [],
       },
     ]);
     toast.success(`${NewColumnName} added successfully`, { duration: 1000 });

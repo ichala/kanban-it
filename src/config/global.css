@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .column-webkit {
   -webkit-column-count: 3;
   -webkit-column-gap: 40px;
@@ -31,7 +32,7 @@
   -webkit-column-count: 3;
   -webkit-column-gap: 10px;
   -webkit-column-rule: 1px solid #ccc;
-  cursor: pointer;
+
 }
 
 .color_pick_item {

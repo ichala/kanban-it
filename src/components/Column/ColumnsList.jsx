@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { DragDropContext, Draggable } from 'react-beautiful-dnd';
+import { Link } from 'react-router-dom';
 import Card from '../Card/Card';
 import Column from './Column';
 import NewColumn from './NewColumn';
@@ -40,8 +41,8 @@ const ColumnsList = () => {
                 {...provided.droppableProps}
                 ref={provided.innerRef}
               >
-                <Column color={item.color} id={item.id}>
-                  {item.tasks.map((task, index) => (
+                <Column data={item}>
+                  {item.cards.map((task, index) => (
                     <Draggable
                       key={task.id}
                       draggableId={task.id}
@@ -57,7 +58,9 @@ const ColumnsList = () => {
                             opacity: snapshot.isDragging ? '0.3' : '1',
                           }}
                         >
-                          <Card data={task} />
+                          <Link to={`/${task.id}/view`}>
+                            <Card data={task} />
+                          </Link>
                         </div>
                       )}
                     </Draggable>
