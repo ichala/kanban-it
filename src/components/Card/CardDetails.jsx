@@ -57,7 +57,7 @@ const CardDetails = () => {
           </ul>
           <div className="modal-action">
             <Link to="/" className="btn">
-              <label className="btn">Close</label>
+              Close
             </Link>
           </div>
         </div>
