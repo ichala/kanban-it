@@ -24,7 +24,11 @@ const Card = ({ data }) => (
       </div>
       <div className="flex items-center">
         <FaTasks className="w-4 h-4" />
-        <span className="ml-1 leading-none">{data.tasks?.length || 0}</span>
+        <span className="ml-1 leading-none">
+          {data.tasks?.filter((task) => task.completed).length }
+          /
+          {data.tasks?.length }
+        </span>
       </div>
 
       <img
