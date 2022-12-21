@@ -10,12 +10,21 @@ const InitialData = [
     tasks: [
       {
         id: uuidv4(),
+        title: 'Demo',
+        description: 'This is a demo task',
+        date: '2023-01-01',
       },
       {
         id: uuidv4(),
+        title: 'Demo',
+        description: 'This is a demo task',
+        date: '2023-01-01',
       },
       {
         id: uuidv4(),
+        title: 'Demo',
+        description: 'This is a demo task',
+        date: '2023-01-01',
       },
     ],
   },
@@ -25,9 +34,15 @@ const InitialData = [
     tasks: [
       {
         id: uuidv4(),
+        title: 'Demo',
+        description: 'This is a demo task',
+        date: '2023-01-01',
       },
       {
         id: uuidv4(),
+        title: 'Demo',
+        description: 'This is a demo task',
+        date: '2023-01-01',
       },
     ],
   },
@@ -37,6 +52,9 @@ const InitialData = [
     tasks: [
       {
         id: uuidv4(),
+        title: 'Demo',
+        description: 'This is a demo task',
+        date: '2023-01-01',
       },
     ],
   },
