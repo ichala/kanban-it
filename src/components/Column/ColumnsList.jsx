@@ -21,12 +21,12 @@ const ColumnsList = () => {
       );
       const sourceCol = StorageData[sourceColIndex];
       const destinationCol = StorageData[destinationColIndex];
-      const sourceTask = [...sourceCol.tasks];
-      const destinationTask = [...destinationCol.tasks];
+      const sourceTask = [...sourceCol.cards];
+      const destinationTask = [...destinationCol.cards];
       const [removed] = sourceTask.splice(source.index, 1);
       destinationTask.splice(destination.index, 0, removed);
-      StorageData[sourceColIndex].tasks = sourceTask;
-      StorageData[destinationColIndex].tasks = destinationTask;
+      StorageData[sourceColIndex].cards = sourceTask;
+      StorageData[destinationColIndex].cards = destinationTask;
       setStorageData([...StorageData]);
     }
   };

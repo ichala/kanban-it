@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { BsCircleFill, BsFillTrashFill } from 'react-icons/bs';
 import { StorageContext } from '../../config/Context/storage';
-import NewCard from '../Card/NewCard';
+import NewCard from './NewCard';
 
 const Column = ({ children, data }) => {
   const { setStorageData } = useContext(StorageContext);
@@ -22,7 +22,7 @@ const Column = ({ children, data }) => {
           <BsFillTrashFill className="text-error" onClick={() => deleteColumn(data.id)} />
         </div>
       </div>
-      <div className="flex flex-col rounded h-[700px] bg-base-100 my-2 p-3 overflow-auto column-webkit">
+      <div className="flex flex-col rounded h-[700px] bg-base-100 my-2 p-3 overflow-x-hidden overflow-y-auto column-webkit">
         {children}
         <NewCard id={data.id} />
       </div>
