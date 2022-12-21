@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import toast from 'react-hot-toast';
 
 import { StorageContext } from '../../../config/Context/storage';
-import CardForm from '../../../components/Card/CardForm';
+import CardForm from '../../../components/Card/NewCardForm';
 
 const New = () => {
   const { id } = useParams();
