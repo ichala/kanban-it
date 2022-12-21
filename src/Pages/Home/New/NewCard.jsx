@@ -1,14 +1,17 @@
 import React, { useContext } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import toast from 'react-hot-toast';
+
 import { StorageContext } from '../../../config/Context/storage';
+import CardForm from '../../../components/Card/CardForm';
 
 const New = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { setStorageData } = useContext(StorageContext);
-  const addcard = () => {
+  const addcard = (values, tasks) => {
+    const CleanTasks = tasks.filter((task) => task.content.trim() !== '');
     setStorageData((prev) => {
       const newStorageData = prev.map((column) => {
         if (column.id === id) {
@@ -18,6 +21,10 @@ const New = () => {
               ...column.tasks,
               {
                 id: uuidv4(),
+                title: values.title,
+                description: values.description,
+                date: values.date,
+                tasks: CleanTasks,
               },
             ],
           };
@@ -33,15 +40,8 @@ const New = () => {
     <div>
       <div className="modal modal-open">
         <div className="modal-box">
-          <h3 className="font-bold text-lg">Add Card</h3>
-          <p className="py-4">Details Here</p>
-          <div className="modal-action">
-            <Link to="/">
-              <button type="button" className="btn btn-error">
-                Cancel
-              </button>
-            </Link>
-            <button onClick={addcard} type="button" className="btn btn-primary">Add</button>
+          <div className="py-4">
+            <CardForm addcard={addcard} />
           </div>
         </div>
       </div>
