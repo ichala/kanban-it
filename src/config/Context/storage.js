@@ -7,54 +7,63 @@ const InitialData = [
   {
     id: uuidv4(),
     color: '#ff5722',
-    tasks: [
+    title: 'To Do',
+    cards: [
       {
         id: uuidv4(),
         title: 'Demo',
         description: 'This is a demo task',
         date: '2023-01-01',
+        tasks: [],
       },
       {
         id: uuidv4(),
         title: 'Demo',
         description: 'This is a demo task',
         date: '2023-01-01',
+        tasks: [],
       },
       {
         id: uuidv4(),
         title: 'Demo',
         description: 'This is a demo task',
         date: '2023-01-01',
+        tasks: [],
       },
     ],
   },
   {
     id: uuidv4(),
     color: '#795548',
-    tasks: [
+    title: 'In Progress',
+    cards: [
       {
         id: uuidv4(),
         title: 'Demo',
         description: 'This is a demo task',
         date: '2023-01-01',
+        tasks: [],
       },
       {
         id: uuidv4(),
         title: 'Demo',
         description: 'This is a demo task',
         date: '2023-01-01',
+        tasks: [],
       },
     ],
   },
   {
     id: uuidv4(),
     color: '#e91e63',
-    tasks: [
+    title: 'Done',
+    cards: [
       {
         id: uuidv4(),
         title: 'Demo',
         description: 'This is a demo task',
         date: '2023-01-01',
+        tasks: [],
       },
     ],
   },
