@@ -23,7 +23,7 @@ const DeleteCard = ({ id, column }) => {
       {ConfirmDelete ? (
         <>
           <div className="flex flex-col text-center justify-center items-center">
-            Are you sure ?
+            Are you sure 😮 ?
             <br />
             <div className="flex flex-row gap-2">
               <button onClick={() => { setConfirmDelete(false); }} type="button" className="btn btn-success btn-sm">
