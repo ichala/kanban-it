@@ -18,9 +18,9 @@ const NewColumn = () => {
       ...prev,
       {
         id: uuidv4(),
-        name: NewColumnName,
+        title: NewColumnName,
         color,
-        tasks: [],
+        cards: [],
       },
     ]);
     toast.success(`${NewColumnName} added successfully`, { duration: 1000 });
@@ -45,10 +45,10 @@ const NewColumn = () => {
           onChangeComplete={handleChange}
         />
         <div className="modal-action">
-          <Link to="/" className="btn btn-error">
+          <Link to="/" className="btn btn-sm">
             Cancel
           </Link>
-          <button type="button" href="#new_album" onClick={handleNewColumn} className="btn">
+          <button type="button" href="#new_album" onClick={handleNewColumn} className="btn btn-primary btn-sm">
             Create
           </button>
         </div>

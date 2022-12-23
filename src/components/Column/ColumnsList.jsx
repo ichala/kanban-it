@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { DragDropContext, Draggable } from 'react-beautiful-dnd';
+import { Link } from 'react-router-dom';
 import Card from '../Card/Card';
 import Column from './Column';
 import NewColumn from './NewColumn';
@@ -12,16 +13,20 @@ const ColumnsList = () => {
     if (!result.destination) return;
     const { source, destination } = result;
     if (source.droppableId !== destination.droppableId) {
-      const sourceColIndex = StorageData.findIndex((e) => e.id === source.droppableId);
-      const destinationColIndex = StorageData.findIndex((e) => e.id === destination.droppableId);
+      const sourceColIndex = StorageData.findIndex(
+        (e) => e.id === source.droppableId,
+      );
+      const destinationColIndex = StorageData.findIndex(
+        (e) => e.id === destination.droppableId,
+      );
       const sourceCol = StorageData[sourceColIndex];
       const destinationCol = StorageData[destinationColIndex];
-      const sourceTask = [...sourceCol.tasks];
-      const destinationTask = [...destinationCol.tasks];
+      const sourceTask = [...sourceCol.cards];
+      const destinationTask = [...destinationCol.cards];
       const [removed] = sourceTask.splice(source.index, 1);
       destinationTask.splice(destination.index, 0, removed);
-      StorageData[sourceColIndex].tasks = sourceTask;
-      StorageData[destinationColIndex].tasks = destinationTask;
+      StorageData[sourceColIndex].cards = sourceTask;
+      StorageData[destinationColIndex].cards = destinationTask;
       setStorageData([...StorageData]);
     }
   };
@@ -29,18 +34,15 @@ const ColumnsList = () => {
     <>
       <DragDropContext onDragEnd={onDragEnd}>
         {StorageData.map((item) => (
-          <StrictModeDroppable
-            key={item.id}
-            droppableId={item.id}
-          >
+          <StrictModeDroppable key={item.id} droppableId={item.id}>
             {(provided) => (
               <div
                 key={item.id}
                 {...provided.droppableProps}
                 ref={provided.innerRef}
               >
-                <Column color={item.color} id={item.id}>
-                  {item.tasks.map((task, index) => (
+                <Column data={item}>
+                  {item.cards.map((task, index) => (
                     <Draggable
                       key={task.id}
                       draggableId={task.id}
@@ -54,16 +56,16 @@ const ColumnsList = () => {
                           style={{
                             ...provided.draggableProps.style,
                             opacity: snapshot.isDragging ? '0.3' : '1',
-
                           }}
                         >
-                          <Card />
+                          <Link to={`/${task.id}/view`}>
+                            <Card data={task} />
+                          </Link>
                         </div>
                       )}
                     </Draggable>
                   ))}
                   {provided.placeholder}
-
                 </Column>
               </div>
             )}
