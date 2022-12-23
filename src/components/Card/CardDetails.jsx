@@ -2,6 +2,7 @@ import moment from 'moment';
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { StorageContext } from '../../config/Context/storage';
+import DeleteCard from './DeleteCard';
 
 const CardDetails = () => {
   const { StorageData, setStorageData } = useContext(StorageContext);
@@ -62,9 +63,7 @@ const CardDetails = () => {
             ))}
           </ul>
           <div className="modal-action flex justify-between">
-            <button type="button" className="btn btn-error btn-sm">
-              Delete
-            </button>
+            <DeleteCard id={data.id} column={Column.id} />
             <div className="flex gap-2">
               <Link to={`/${data.id}/edit`} className="btn btn-warning btn-sm">
                 Edit
