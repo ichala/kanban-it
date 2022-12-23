@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { MdDeleteForever } from 'react-icons/md';
 import { AiOutlinePlus } from 'react-icons/ai';
 
-const SignupSchema = Yup.object().shape({
+const NewCardSchema = Yup.object().shape({
   title: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
@@ -26,7 +26,7 @@ const CardForm = ({ addcard }) => {
         description: '',
         date: '',
       }}
-      validationSchema={SignupSchema}
+      validationSchema={NewCardSchema}
       onSubmit={(values) => {
         addcard(values, Tasks);
       }}
