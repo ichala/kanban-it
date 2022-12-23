@@ -173,11 +173,11 @@ const CardForm = ({ addcard }) => {
           </div>
           <div className="modal-action">
             <Link to="/">
-              <button type="button" className="btn btn-error">
+              <button type="button" className="btn btn-sm ">
                 Cancel
               </button>
             </Link>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-sm btn-primary">
               Add
             </button>
           </div>

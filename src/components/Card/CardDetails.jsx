@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { StorageContext } from '../../config/Context/storage';
@@ -38,9 +39,14 @@ const CardDetails = () => {
     data && (
       <div className="modal modal-open ">
         <div className="modal-box">
-          <span className="flex items-center h-6  text-xs font-semibold text-primary bg-base-100 rounded-full">
-            {data.title.charAt(0).toUpperCase() + data.title.slice(1)}
-          </span>
+          <div className="flex justify-between">
+            <span className="flex items-center h-6  text-xs font-semibold text-primary bg-base-100 rounded-full">
+              {data.title.charAt(0).toUpperCase() + data.title.slice(1)}
+            </span>
+            <span className="flex items-center h-6  text-xs font-semibold text-primary">
+              {moment(data.date).format('MMM Do yyyy ')}
+            </span>
+          </div>
           <p className="py-4">{data.description}</p>
           <ul className="flex flex-col gap-1">
             {data.tasks?.map((task) => (
@@ -55,10 +61,19 @@ const CardDetails = () => {
               </li>
             ))}
           </ul>
-          <div className="modal-action">
-            <Link to="/" className="btn">
-              Close
-            </Link>
+          <div className="modal-action flex justify-between">
+            <button type="button" className="btn btn-error btn-sm">
+              Delete
+            </button>
+            <div className="flex gap-2">
+              <Link to={`/${data.id}/edit`} className="btn btn-warning btn-sm">
+                Edit
+              </Link>
+              <Link to="/" className="btn btn-sm">
+                Close
+              </Link>
+
+            </div>
           </div>
         </div>
       </div>
