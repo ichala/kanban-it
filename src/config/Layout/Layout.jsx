@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
         <div className="drawer-content">
           <Navbar />
           <div className="my-3 p-3">
-            <div className="flex flex-grow  mt-4 container-webkit overflow-auto">
+            <div className="flex flex-grow flex-col  mt-4 container-webkit overflow-auto">
               {children}
             </div>
           </div>
