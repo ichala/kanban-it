@@ -3,7 +3,7 @@ import { BsFillKanbanFill } from 'react-icons/bs';
 import ThemeSelect from './ThemeSelect';
 
 const Navbar = () => (
-  <div className="navbar bg-base-300">
+  <div className="navbar bg-base-00">
     <div className="flex-1">
       <a href="#s" className="btn btn-ghost normal-case text-xl gap-1">
         <BsFillKanbanFill className="text-primary" />
