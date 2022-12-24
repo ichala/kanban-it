@@ -32,47 +32,49 @@ const ColumnsList = () => {
   };
   return (
     <>
-      <DragDropContext onDragEnd={onDragEnd}>
-        {StorageData.map((item) => (
-          <StrictModeDroppable key={item.id} droppableId={item.id}>
-            {(provided) => (
-              <div
-                key={item.id}
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-              >
-                <Column data={item}>
-                  {item.cards.map((task, index) => (
-                    <Draggable
-                      key={task.id}
-                      draggableId={task.id}
-                      index={index}
-                    >
-                      {(provided, snapshot) => (
-                        <div
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                          style={{
-                            ...provided.draggableProps.style,
-                            opacity: snapshot.isDragging ? '0.3' : '1',
-                          }}
-                        >
-                          <Link to={`/${task.id}/view`}>
-                            <Card data={task} />
-                          </Link>
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
-                  {provided.placeholder}
-                </Column>
-              </div>
-            )}
-          </StrictModeDroppable>
-        ))}
-      </DragDropContext>
-      <NewColumn />
+      <div className="flex  gap-3">
+        <DragDropContext onDragEnd={onDragEnd}>
+          {StorageData.map((item) => (
+            <StrictModeDroppable key={item.id} droppableId={item.id}>
+              {(provided) => (
+                <div
+                  key={item.id}
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  <Column data={item}>
+                    {item.cards.map((task, index) => (
+                      <Draggable
+                        key={task.id}
+                        draggableId={task.id}
+                        index={index}
+                      >
+                        {(provided, snapshot) => (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            style={{
+                              ...provided.draggableProps.style,
+                              opacity: snapshot.isDragging ? '0.3' : '1',
+                            }}
+                          >
+                            <Link to={`/${task.id}/view`}>
+                              <Card data={task} />
+                            </Link>
+                          </div>
+                        )}
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
+                  </Column>
+                </div>
+              )}
+            </StrictModeDroppable>
+          ))}
+        </DragDropContext>
+        <NewColumn />
+      </div>
     </>
   );
 };

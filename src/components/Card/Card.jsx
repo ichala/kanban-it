@@ -5,7 +5,7 @@ import moment from 'moment';
 
 const Card = ({ data }) => (
   <div
-    className="relative flex flex-col items-start p-4 mt-3 bg-primary rounded-lg cursor-pointer bg-opacity-90 group hover:bg-opacity-100"
+    className="relative shadow-lg flex flex-col items-start p-4 mt-3 bg-primary rounded-lg cursor-pointer bg-opacity-90 group hover:bg-opacity-100"
     draggable="true"
   >
 
