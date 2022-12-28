@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { BsGithub, BsGoogle } from 'react-icons/bs';
+import { BsFillKanbanFill, BsGithub, BsGoogle } from 'react-icons/bs';
 import { useSearchParams } from 'react-router-dom';
 import { AuthContext } from '../../config/Context/auth';
 import { signInWithGithub, signInWithGoogle } from '../../config/firebase';
@@ -15,13 +15,17 @@ const Login = () => {
   }, [user]);
 
   return (
-    <div className="min-h-screen overflow-hidden bg-base-300 flex justify-center items-center">
+    <div className="min-h-screen flex-col overflow-hidden bg-base-300 flex justify-center items-center">
+      <h1 className=" md:text-6xl text-5xl  flex gap-2 items-center  font-bold text-center mb-4 cursor-pointer">
+        <BsFillKanbanFill className="text-primary" />
+        KanBan-it!
+      </h1>
       <div className="py-12 px-12 bg-base-200 rounded-2xl shadow-xl z-20">
         <div>
           <h1 className="text-3xl font-bold text-center mb-4 cursor-pointer">
             Login To Start
           </h1>
-          <p className="w-80 text-center text-sm mb-8 font-semibold text-gray-700 tracking-wide cursor-pointer">
+          <p className="w-80 text-center text-sm mb-8 font-semibold text-base-content/60 tracking-wide cursor-pointer">
             Create an account to enjoy all the services without any limtations
           </p>
         </div>
@@ -44,6 +48,17 @@ const Login = () => {
           </button>
         </div>
       </div>
+      <span>
+        Created by
+        <a className="text-primary" href="https://chala.dev" target="_blank" rel="noreferrer"> Chala</a>
+
+      </span>
+      <span>
+        Get
+        <a className="text-primary" href="https://github.com/ichala/kanban-it" target="_blank" rel="noreferrer"> SourceCode</a>
+
+      </span>
+
     </div>
   );
 };
