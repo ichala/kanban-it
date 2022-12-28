@@ -9,14 +9,14 @@ function App() {
   const routes = useRoutes(routesConfig);
   return (
     <>
-      <AuthContextProvider>
-        <StorageProvider>
-          <ThemeProvider>
+      <ThemeProvider>
+        <AuthContextProvider>
+          <StorageProvider>
             <Toaster />
-            { routes }
-          </ThemeProvider>
-        </StorageProvider>
-      </AuthContextProvider>
+            {routes}
+          </StorageProvider>
+        </AuthContextProvider>
+      </ThemeProvider>
     </>
   );
 }
