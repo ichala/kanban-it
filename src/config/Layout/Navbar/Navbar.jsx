@@ -1,6 +1,7 @@
 import { signOut } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { BsFillKanbanFill } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/auth';
 import { auth } from '../../firebase';
 import ThemeSelect from './ThemeSelect';
@@ -35,7 +36,9 @@ const Navbar = () => {
               </button>
             </li>
             <li>
-              <a href="#s">Settings</a>
+              <Link to="/backup">
+                Backup
+              </Link>
             </li>
             <li>
               <button
