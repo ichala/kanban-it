@@ -7,7 +7,9 @@ export const ThemeProvider = ({ children }) => {
   localStorage.setItem('theme', JSON.stringify(Theme));
   return (
     <ThemeContext.Provider value={{ Theme, setTheme }}>
-      {children}
+      <main data-theme={Theme} className="bg-base-200 min-h-screen">
+        {children}
+      </main>
     </ThemeContext.Provider>
   );
 };
