@@ -8,11 +8,14 @@ export const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [Loading, setLoading] = useState(true);
+
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
       if (user) {
         const image = user.photoURL || '/assets/images/no-image.png';
-        setCurrentUser({ name: user.displayName, image, id: user.uid });
+        setCurrentUser({
+          name: user.displayName, image, id: user.uid, email: user.email,
+        });
         setLoading(false);
       } else {
         setCurrentUser(null);
