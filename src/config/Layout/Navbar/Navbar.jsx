@@ -1,5 +1,7 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { BsFillKanbanFill } from 'react-icons/bs';
+import { auth } from '../../firebase';
 import ThemeSelect from './ThemeSelect';
 
 const Navbar = () => (
@@ -34,7 +36,15 @@ const Navbar = () => (
             <a href="#s">Settings</a>
           </li>
           <li>
-            <a href="#s">Logout</a>
+            <button
+              type="button"
+              className="text-red-500"
+              onClick={() => {
+                signOut(auth);
+              }}
+            >
+              Logout
+            </button>
           </li>
         </ul>
       </div>
