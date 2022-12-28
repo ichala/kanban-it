@@ -17,6 +17,7 @@
     "eslint-plugin-jsx-a11y": "6.x",
     "eslint-plugin-react": "7.x",
     "eslint-plugin-react-hooks": "4.x",
+    "firebase": "^9.15.0",
     "formik": "^2.2.9",
     "moment": "^2.29.4",
     "react": "^18.2.0",
