@@ -5,7 +5,7 @@ import moment from 'moment';
 import { AuthContext } from '../../config/Context/auth';
 
 const Card = ({ data }) => {
-  const { CurrentUser } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
   return (
     <div
       className="relative shadow-lg flex flex-col items-start p-4 mt-3 bg-primary rounded-lg cursor-pointer bg-opacity-90 group hover:bg-opacity-100"
@@ -37,7 +37,7 @@ const Card = ({ data }) => {
         <img
           alt="user-avatar"
           className="w-6 h-6 ml-auto rounded-full"
-          src={CurrentUser.image}
+          src={currentUser.image}
         />
       </div>
     </div>
