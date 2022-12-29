@@ -20,9 +20,13 @@ const Backup = () => {
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       setBackup(docSnap.data());
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     } else {
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     }
   };
   async function createBackup() {
@@ -108,13 +112,16 @@ const Backup = () => {
                     />
                   </>
                 ) : (
-                  <button
-                    onClick={() => createBackup()}
-                    type="button"
-                    className="btn btn-md btn-success"
-                  >
-                    Create Backup
-                  </button>
+                  <>
+                    <h1 className="text-xl font-bold text-center mb-4"> No Backups Found</h1>
+                    <button
+                      onClick={() => createBackup()}
+                      type="button"
+                      className="btn btn-md btn-success"
+                    >
+                      Create Backup
+                    </button>
+                  </>
                 )}
               </div>
             </>
