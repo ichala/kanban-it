@@ -1,6 +1,7 @@
 import { signOut } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { BsFillKanbanFill } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/auth';
 import { auth } from '../../firebase';
 import ThemeSelect from './ThemeSelect';
@@ -30,13 +31,14 @@ const Navbar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a href="#s" className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
+              <button type="button" disabled className="disabled ">
+                <span className="text-gray-500">{currentUser.name.slice(0, 20) || currentUser.email.slice(0, 20) || currentUser.id.slice(0, 20) }</span>
+              </button>
             </li>
             <li>
-              <a href="#s">Settings</a>
+              <Link to="/backup">
+                Backup
+              </Link>
             </li>
             <li>
               <button
