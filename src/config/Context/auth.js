@@ -17,6 +17,9 @@ export const AuthContextProvider = ({ children }) => {
         setCurrentUser({
           name: user.displayName, image, id: user.uid, email: user.email,
         });
+        setTimeout(() => {
+          setLoading(false);
+        }, 2000);
       } else {
         setCurrentUser(null);
         setTimeout(() => {
