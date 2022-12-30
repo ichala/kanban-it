@@ -10,7 +10,11 @@ describe('New Column page content test', () => {
     render(
       <BrowserRouter>
         <AuthContext.Provider
-          value={{ user: { uid: '123', displayName: 'test' } }}
+          value={{
+            user: {
+              name: 'testuser', image: 'https://placeimg.com/192/192/people', id: '1', email: 'test@test.com',
+            },
+          }}
         >
           <StorageProvider>
             <NewColumn />
@@ -34,7 +38,11 @@ describe('Add Column Features', () => {
     render(
       <BrowserRouter>
         <AuthContext.Provider
-          value={{ user: { uid: '123', displayName: 'test' } }}
+          value={{
+            user: {
+              name: 'testuser', image: 'https://placeimg.com/192/192/people', id: '1', email: 'test@test.com',
+            },
+          }}
         >
           <StorageProvider>
             <NewColumn />
@@ -61,7 +69,11 @@ describe('Add Column Features', () => {
     render(
       <BrowserRouter>
         <AuthContext.Provider
-          value={{ user: { uid: '123', displayName: 'test' } }}
+          value={{
+            user: {
+              name: 'testuser', image: 'https://placeimg.com/192/192/people', id: '1', email: 'test@test.com',
+            },
+          }}
         >
           <StorageProvider>
             <NewColumn />
