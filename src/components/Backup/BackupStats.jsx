@@ -33,9 +33,9 @@ const BackupStats = ({ Backup, Image }) => {
             <div className="stat-figure text-primary">
               <BsLayoutThreeColumns className="h-8 w-8" />
             </div>
-            <div className="stat-title">Total Columns</div>
+            <div className="stat-title text-base-content">Total Columns</div>
             <div className="stat-value text-primary">{BackupData.length}</div>
-            <div className="stat-desc">
+            <div className="stat-desc text-base-content">
               Backup Created
               {' '}
               {moment().startOf(Backup.created_at).fromNow()}
@@ -56,7 +56,7 @@ const BackupStats = ({ Backup, Image }) => {
           </div>
 
           <div className="stat">
-            <div className="stat-figure text-secondary">
+            <div className="stat-figure text-base-content">
               <div className="avatar online">
                 <div className="w-16 rounded-full">
                   <img alt="UserImage" src={Image} />
@@ -68,7 +68,7 @@ const BackupStats = ({ Backup, Image }) => {
               %
             </div>
             <div className="stat-title">Tasks done</div>
-            <div className="stat-desc text-secondary">
+            <div className="stat-desc text-base-content">
               {CountTasks - CountDoneTasks}
               {' '}
               tasks remaining

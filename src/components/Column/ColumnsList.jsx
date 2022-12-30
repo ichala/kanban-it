@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import { DragDropContext, Draggable } from 'react-beautiful-dnd';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
 import Card from '../Card/Card';
 import Column from './Column';
 import NewColumn from './NewColumn';
@@ -34,7 +36,7 @@ const ColumnsList = () => {
     <>
       <div className="flex  gap-3">
         <DragDropContext onDragEnd={onDragEnd}>
-          {StorageData.map((item) => (
+          {StorageData.map((item, index) => (
             <StrictModeDroppable key={item.id} droppableId={item.id}>
               {(provided) => (
                 <div
@@ -42,32 +44,47 @@ const ColumnsList = () => {
                   {...provided.droppableProps}
                   ref={provided.innerRef}
                 >
-                  <Column data={item}>
-                    {item.cards.map((task, index) => (
-                      <Draggable
-                        key={task.id}
-                        draggableId={task.id}
-                        index={index}
-                      >
-                        {(provided, snapshot) => (
-                          <div
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            style={{
-                              ...provided.draggableProps.style,
-                              opacity: snapshot.isDragging ? '0.3' : '1',
-                            }}
-                          >
-                            <Link to={`/${task.id}/view`}>
-                              <Card data={task} />
-                            </Link>
-                          </div>
-                        )}
-                      </Draggable>
-                    ))}
-                    {provided.placeholder}
-                  </Column>
+                  <motion.div
+                    initial={{ x: 100 }}
+                    animate={{
+
+                      x: 0,
+                      zIndex: -1,
+                    }}
+                    transition={{
+                      duration: 1 + index * 0.1,
+
+                    }}
+                  >
+                    <Column data={item}>
+                      {item.cards.map((task, index) => (
+                        <Draggable
+                          key={task.id}
+                          draggableId={task.id}
+                          index={index}
+                        >
+                          {(provided, snapshot) => (
+                            <div
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              style={{
+                                ...provided.draggableProps.style,
+                                opacity: snapshot.isDragging ? '0.3' : '1',
+                              }}
+                            >
+                              <Link to={`/${task.id}/view`}>
+
+                                <Card data={task} />
+
+                              </Link>
+                            </div>
+                          )}
+                        </Draggable>
+                      ))}
+                      {provided.placeholder}
+                    </Column>
+                  </motion.div>
                 </div>
               )}
             </StrictModeDroppable>
