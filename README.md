@@ -38,7 +38,7 @@
 
 ## Live Demo
 
-[KanBan-it! Live Demo](https://kanban-it.chala.dev)
+[KanBan-it! Live Demo](https://kanban-it.chala.dev) 🚨
 
 ## Authors
 
